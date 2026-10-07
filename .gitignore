@@ -105,5 +105,7 @@ example/_minted-test
 .build-check/
 .nb-pdf-*/
 examples/*.pdf
+!examples/chinese_authentic_zh.pdf
+!examples/chinese_above.pdf
 examples/*.tex
 examples/*_files/

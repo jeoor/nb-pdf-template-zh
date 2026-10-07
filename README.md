@@ -14,7 +14,7 @@ conda activate notebook-pdf-zh
 python -m pip install --no-build-isolation --no-deps .
 ```
 
-Python 3.11、JupyterLab、Pandoc 和构建依赖由 Conda 一次安装。最后一条命令只安装本地模板。
+Python 3.11、JupyterLab、Pandoc 和构建依赖由 Conda 一次安装。最后一条命令复用这些依赖，只安装本地模板，避免重复下载。
 
 ## MiKTeX
 
@@ -22,16 +22,13 @@ Python 3.11、JupyterLab、Pandoc 和构建依赖由 Conda 一次安装。最后
 2. 打开 `MiKTeX Console → Updates`，检查并安装更新。
 3. 在 `Settings → General` 中选择 `Always install missing packages on-the-fly`，让编译过程自动补齐宏包。设置说明见[官方文档](https://miktex.org/howto/miktex-console)。
 
-重新打开终端，提前安装中文字体和主要宏包：
+重新打开终端，安装中文支持和字体，其余缺失宏包由 MiKTeX 自动补齐：
 
 ```powershell
-miktex packages update-package-database
-miktex packages install ctex fandol tcolorbox needspace newunicodechar
-where.exe xelatex
-xelatex --version
+miktex packages install ctex fandol
 ```
 
-找不到命令时，把 MiKTeX 安装目录中的 `miktex\bin\x64` 加入用户 `PATH`，再重开终端。同时安装了 TeX Live 的话，检查 `where.exe xelatex` 的第一条结果。
+用 `xelatex --version` 检查安装。找不到命令时，把 MiKTeX 安装目录中的 `miktex\bin\x64` 加入用户 `PATH`，再重开终端。同时安装了 TeX Live 的话，用 `where.exe xelatex` 检查程序路径。
 
 已有 TeX Live 也可以直接使用，确保 XeLaTeX、CTeX、Fandol 和对应宏包可用。
 
@@ -46,6 +43,8 @@ jupyter nbconvert examples/chinese.ipynb --to pdf --template latex_authentic_zh
 输出为 `examples/chinese.pdf`，使用 Notebook 已保存的结果，不运行代码。
 
 总标题直接写成 `# 报告标题`。正文和表格支持 `[x]` → ☑、`[ ]` → ☐，也支持同一行写 `-[ ] -[x]`。代码和公式保持原样。
+
+[`example`](example) 提供基础排版的三种 PDF 和[对比图](example/comparison.png)；[`examples`](examples) 提供中文、符号和选择框示例，以及隐藏编号和编号在上方的两份 PDF。
 
 ## 默认模板
 
@@ -70,7 +69,7 @@ c.LatexExporter.exclude_output_prompt = True
 
 ```powershell
 python -m nb_pdf_template examples/chinese.ipynb --hide-prompts
-python -m unittest discover -s tests -v
+python -m unittest discover -s tests
 ```
 
 源码命令默认生成 `examples/chinese_authentic_zh.pdf`，其他参数见 `python -m nb_pdf_template --help`。
