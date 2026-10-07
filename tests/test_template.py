@@ -12,9 +12,9 @@ from nb_pdf_template.checkboxes import render_checkboxes
 
 class TemplateTests(unittest.TestCase):
     def export(self, nb, layout='index.tex.j2', **options):
+        templates = str(Path(__file__).resolve().parents[1] / 'share' / 'templates')
         exporter = LatexExporter(template_name='latex_authentic_zh', template_file=layout,
-                                 extra_template_basedirs=[str(Path(__file__).resolve().parents[1] / 'share' / 'templates')],
-                                 extra_template_paths=[str(Path(__file__).resolve().parents[1] / 'share' / 'templates')],
+                                 extra_template_basedirs=[templates], extra_template_paths=[templates],
                                  **options)
         return exporter.from_notebook_node(nb)[0]
 
