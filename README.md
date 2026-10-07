@@ -2,6 +2,18 @@
 
 基于 [t-makaro/nb_pdf_template](https://github.com/t-makaro/nb_pdf_template) 的 Jupyter 中文 PDF 模板。保留上游排版，支持中文、常用符号和同行选择框，默认 A4、11 pt、Fandol 字体。
 
+## 效果
+
+中文、符号、同行选择框和代码输出，隐藏执行编号。点击图片查看 PDF。
+
+[![中文 PDF 效果](examples/chinese.png)](examples/chinese_authentic_zh.pdf)
+
+同一份 Notebook 的三种排版，均展示第一页：
+
+![排版对比](example/comparison.png)
+
+完整 PDF：[nbconvert 默认](example/test_latex.pdf) · [编号在左](example/test_latex_authentic.pdf) · [编号在上](example/test_latex_authentic_m.pdf)。中文示例另有[编号在上版本](examples/chinese_above.pdf)。
+
 ## 安装
 
 以下命令在 Windows PowerShell 中运行，需要已有 Conda 和 Git：
@@ -43,8 +55,6 @@ jupyter nbconvert examples/chinese.ipynb --to pdf --template latex_authentic_zh
 输出为 `examples/chinese.pdf`，使用 Notebook 已保存的结果，不运行代码。
 
 总标题直接写成 `# 报告标题`。正文和表格支持 `[x]` → ☑、`[ ]` → ☐，也支持同一行写 `-[ ] -[x]`。代码和公式保持原样。
-
-[`example`](example) 提供基础排版的三种 PDF 和[对比图](example/comparison.png)；[`examples`](examples) 提供中文、符号和选择框示例，以及隐藏编号和编号在上方的两份 PDF。
 
 ## 默认模板
 

@@ -1,2 +1,0 @@
-recursive-include share/templates/latex_authentic/ *
-recursive-include share/templates/latex_authentic_zh/ *
