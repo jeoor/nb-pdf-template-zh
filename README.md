@@ -17,13 +17,7 @@ conda activate notebook-pdf-zh
 
 也可以在 GitHub 点击 `Code → Download ZIP`，解压后进入仓库目录。
 
-`environment.yml` 提供 Python、JupyterLab、nbconvert、nbformat、Pandoc、pip 和构建工具 Hatchling。MiKTeX 或 TeX Live 需要另外安装。
-
-如果使用已有环境，先激活它，再安装对应依赖：
-
-```powershell
-conda install -c conda-forge "python=3.11" "jupyterlab>=4,<5" "nbconvert>=7,<8" "nbformat>=5,<6" "pandoc>=3,<4" pip "hatchling>=1,<2"
-```
+`environment.yml` 已指定 `python=3.11`，并包含 JupyterLab、nbconvert、nbformat、Pandoc、pip 和构建工具 Hatchling。创建环境时会一起安装，不需要再执行 `conda install`。MiKTeX 或 TeX Live 需要另外安装。
 
 ## 安装 MiKTeX
 
@@ -69,7 +63,7 @@ python -m pip install --no-build-isolation --no-deps .
 jupyter nbconvert examples/chinese.ipynb --to pdf --template latex_authentic_zh --output-dir examples --output chinese_check
 ```
 
-前面的 Conda 环境已经安装了构建工具和运行依赖，所以这里直接安装本地源码。以后修改模板后，也用同一条安装命令更新。
+Conda 已提供构建工具和运行依赖。这两个参数让 pip 直接使用当前环境，只安装本地模板。以后修改模板后，也用同一条命令更新。
 
 成功后会生成 `examples/chinese_check.pdf`，里面有中文、代码、公式、表格和选择框。导出使用 Notebook 已保存的输出，不重新运行代码。
 
