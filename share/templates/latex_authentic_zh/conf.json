@@ -1,0 +1,14 @@
+{
+  "base_template": "latex_authentic",
+  "preprocessors": {
+    "900-checkboxes": {
+      "type": "nb_pdf_template.checkboxes.CheckboxPreprocessor",
+      "enabled": true
+    }
+  },
+  "mimetypes": {
+    "text/latex": true,
+    "text/tex": true,
+    "application/pdf": true
+  }
+}

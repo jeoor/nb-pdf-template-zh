@@ -1,4 +1,4 @@
-((*- extends 'index.tex.j2' -*))
+((*- extends 'latex_authentic/index.tex.j2' -*))
 
 ((*- block packages -*))
     \usepackage{needspace}
@@ -10,7 +10,7 @@
 ((*- endblock margins -*))
 
 ((*- block style_prompt *))
-    \newcommand{\prompt}[3]{
+    \newcommand{\prompt}[4]{
         \needspace{1.1cm}
         \noindent{\color{#2}#1 [#3]:}
     }
@@ -25,7 +25,7 @@
 ((*- set style = "breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder"-*))
 ((*- else -*))((*- set style = "breakable, boxrule=.5pt, size=fbox, pad at break*=1mm, opacityfill=0"-*))((*-  endif -*))
 
-(((- draw_prompt(cell, prompt, prompt_color) )))
+(((- draw_prompt(cell, prompt, prompt_color, extra_space) )))
 \begin{tcolorbox}[((( style )))]
 \begin{Verbatim}[commandchars=\\\{\}]
 ((( text )))

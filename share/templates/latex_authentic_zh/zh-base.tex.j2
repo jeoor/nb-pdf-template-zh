@@ -1,0 +1,31 @@
+((=- Chinese compatibility layer over t-makaro/nb_pdf_template (MIT). -=))
+((* set zh_fontset = nb.metadata.get('latex_authentic_zh', {}).get('fontset', 'fandol') *))
+((* extends authentic_parent *))
+
+((* block packages *))
+((* include 'zh-packages.tex.j2' *))
+\setcounter{secnumdepth}{0}
+((* endblock packages *))
+
+((* block repygments *))
+% Preserve upstream token colours without changing xeCJK character classes.
+\definecolor{Grey}{rgb}{0.40,0.40,0.40}
+\newcommand{\zhOperator}[1]{\begingroup
+  \def\zhPeriod{.}\def\zhToken{#1}
+  \ifx\zhToken\zhPeriod\color{Grey}\else\color[HTML]{AA22FF}\fi
+  #1\endgroup}
+\makeatletter
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[HTML]{008800}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[HTML]{008800}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\def\PY@tc##1{\textcolor[HTML]{000000}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[HTML]{008000}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\zhOperator{##1}}}
+\makeatother
+((* endblock repygments *))
+
+((* block markdowncell scoped *))
+((= Preserve the complete Markdown heading, including with locally modified parent templates. =))
+((* set markdown_json = cell.source | citation2latex | strip_files_prefix | convert_pandoc('markdown+tex_math_double_backslash', 'json', extra_args=[]) *))
+((* set markdown_latex = resources.latex_authentic_zh.render_checkboxes(markdown_json) | resolve_references | convert_explicitly_relative_paths | convert_pandoc('json', 'latex') *))
+((( resources.latex_authentic_zh.render_task_checkmarks(markdown_latex) )))
+((* endblock markdowncell *))

@@ -1,0 +1,66 @@
+% Core package setup adapts nbconvert's BSD-3-Clause LaTeX preamble.
+% See THIRD_PARTY_NOTICES.md. Compatibility is local to this template.
+\usepackage[breakable]{tcolorbox}
+\usepackage{parskip}
+\usepackage{graphicx}
+\setkeys{Gin}{keepaspectratio}
+\let\Oldincludegraphics\includegraphics
+\usepackage{caption}
+\DeclareCaptionFormat{nocaption}{}
+\captionsetup{format=nocaption,aboveskip=0pt,belowskip=0pt}
+\usepackage{float}
+\floatplacement{figure}{H}
+\usepackage{xcolor,enumerate,geometry,amsmath,amssymb}
+\usepackage{textcomp,upquote,eurosym}
+\AtBeginDocument{\def\PYZsq{\textquotesingle}}
+\usepackage{iftex,fontspec,unicode-math}
+\usepackage[UTF8,scheme=plain((* if zh_fontset != 'auto' *)),fontset=((( zh_fontset )))((* endif *))]{ctex}
+\usepackage{fancyvrb,grffile}
+\usepackage[Export]{adjustbox}
+\adjustboxset{max size={0.9\linewidth}{0.9\paperheight}}
+\usepackage{hyperref,titling,longtable,booktabs,array,calc}
+\usepackage[inline]{enumitem}
+\usepackage[normalem]{ulem}
+\usepackage{soul,mathrsfs,needspace,newunicodechar}
+\makeatletter
+\@ifundefined{c@none}{\newcounter{none}}{}
+\makeatother
+% unicode-math initializes active operators at begin-document; map text symbols afterwards.
+\AtBeginDocument{
+\newunicodechar{≠}{\ensuremath{\neq}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{×}{\ensuremath{\times}}
+\newunicodechar{÷}{\ensuremath{\div}}
+\newunicodechar{±}{\ensuremath{\pm}}
+\newunicodechar{∞}{\ensuremath{\infty}}
+\newunicodechar{√}{\ensuremath{\surd}}
+% unicode-math defines \sum as the active character itself; use its glyph directly.
+\newunicodechar{∑}{\ensuremath{\Umathchar 1 \symoperators "2211 }}
+\newunicodechar{∈}{\ensuremath{\in}}
+\newunicodechar{∉}{\ensuremath{\notin}}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{←}{\ensuremath{\leftarrow}}
+\newunicodechar{↔}{\ensuremath{\leftrightarrow}}
+\newunicodechar{⇒}{\ensuremath{\Rightarrow}}
+\newunicodechar{°}{\ensuremath{{}^{\circ}}}
+\newunicodechar{α}{\ensuremath{\alpha}}
+\newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{γ}{\ensuremath{\gamma}}
+\newunicodechar{θ}{\ensuremath{\theta}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{μ}{\ensuremath{\mu}}
+\newunicodechar{π}{\ensuremath{\pi}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{φ}{\ensuremath{\phi}}
+\newunicodechar{ω}{\ensuremath{\omega}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{☐}{\ensuremath{\square}}
+\newunicodechar{☑}{\makebox[0.9em]{\rlap{\ensuremath{\square}}\ensuremath{\checkmark}}}
+\newunicodechar{☒}{\makebox[0.9em]{\rlap{\ensuremath{\square}}\ensuremath{\times}}}
+\newunicodechar{✓}{\ensuremath{\checkmark}}
+\newunicodechar{✔}{\ensuremath{\checkmark}}
+\newunicodechar{✗}{\ensuremath{\times}}
+\newunicodechar{✘}{\ensuremath{\times}}
+}

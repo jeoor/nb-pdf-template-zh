@@ -100,3 +100,10 @@ example/_minted-test
 
 # image files
 *.afphoto
+
+# Local validation and generated Chinese example exports
+.build-check/
+.nb-pdf-*/
+examples/*.pdf
+examples/*.tex
+examples/*_files/
