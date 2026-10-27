@@ -7,6 +7,17 @@
 \setcounter{secnumdepth}{0}
 ((* endblock packages *))
 
+((* block definitions *))
+((( super() )))
+% Markdown H1 headings serve as centered article titles; lower levels keep their style.
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{\z@}%
+  {-3.5ex \@plus -1ex \@minus -.2ex}%
+  {2.3ex \@plus .2ex}%
+  {\centering\normalfont\LARGE\bfseries}}
+\makeatother
+((* endblock definitions *))
+
 ((* block repygments *))
 % Preserve upstream token colours without changing xeCJK character classes.
 \definecolor{Grey}{rgb}{0.40,0.40,0.40}
